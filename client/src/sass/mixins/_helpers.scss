@@ -1,0 +1,53 @@
+@mixin styles-from-list($prefix-name, $prop-name, $list) {
+    @each $item in $list {
+        .#{$prefix-name}-#{$item} {
+            #{$prop-name}: $item;
+        }
+    }
+}
+
+@mixin styles-from-map($prefix-name, $prop-name, $map) {
+    @each $key, $value in $map {
+        .#{$prefix-name}-#{$key} {
+            #{$prop-name}: $value;
+        }
+    }
+}
+
+@mixin flex-grid($grid-prefix, $col-prefix, $max-col-count) {
+    @for $i from 2 through $max-col-count {
+        .#{$grid-prefix}-#{$i} {
+            > * {
+                width: 100% / $i;
+            }
+
+            @for $j from 1 through $i {
+                > .#{$col-prefix}-#{$j} {
+                    width: 100% / $i * $j;
+                }
+            }
+        }
+    }
+}
+
+@mixin flex-deep-grid($cols, $gap: 0, $pad: $gap) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        width: calc(100% / #{$cols});
+    }
+
+    @if $gap>0 or $pad>0 {
+        &,
+        & > * {
+            padding: $pad / 2 $gap / 2;
+        }
+    }
+
+    @for $i from 2 through $cols {
+        > .col-#{$i} {
+            width: calc(100% / #{$cols / $i});
+        }
+    }
+}

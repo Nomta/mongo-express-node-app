@@ -1,0 +1,43 @@
+@mixin pads($prefix-name, $prop-name, $start, $end: $start, $step: 1) {
+    @for $i from $start through $end {
+        $num: $i * $step;
+        $val: $num + px;
+
+        .#{$prefix-name}y-#{$num} {
+            #{$prop-name}-top: $val !important;
+            #{$prop-name}-bottom: $val !important;
+        }
+
+        .#{$prefix-name}x-#{$num} {
+            #{$prop-name}-left: $val !important;
+            #{$prop-name}-right: $val !important;
+        }
+
+        .#{$prefix-name}t-#{$num} {
+            #{$prop-name}-top: $val !important;
+        }
+
+        .#{$prefix-name}b-#{$num} {
+            #{$prop-name}-bottom: $val !important;
+        }
+
+        .#{$prefix-name}l-#{$num} {
+            #{$prop-name}-left: $val !important;
+        }
+
+        .#{$prefix-name}r-#{$num} {
+            #{$prop-name}-right: $val !important;
+        }
+    }
+}
+
+@each $prefix-name, $prop-name in (m: margin, p: padding) {
+    @include pads($prefix-name, $prop-name, $start: 3, $end: 12, $step: 2);
+    @include pads($prefix-name, $prop-name, $start: 0, $end: 3, $step: 5);
+    @include pads($prefix-name, $prop-name, $start: 5, $end: 10, $step: 5);
+
+    .#{$prefix-name}x-auto {
+        #{$prop-name}-left: auto !important;
+        #{$prop-name}-right: auto !important;
+    }
+}

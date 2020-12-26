@@ -1,0 +1,30 @@
+@import 'variables/grid';
+@import 'variables/breakpoints';
+@import 'mixins/helpers';
+
+[class*='grid-'] {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        width: 100%;
+    }
+
+    @if ($grid-column-gap > 0 or $grid-row-gap > 0) {
+        &.grid-parted {
+            margin: -1 * $grid-row-gap -1 * $grid-column-gap;
+            &,
+            & > * {
+                padding: $grid-row-gap / 2 $grid-column-gap / 2;
+            }
+        }
+    }
+}
+
+@include flex-grid(grid, col, $max-grid-column-count);
+
+@each $bp, $width in $breakpoints {
+    @media (min-width: #{ $width }) {
+        @include flex-grid(grid-#{$bp}, col-#{$bp}, $max-grid-column-count);
+    }
+}

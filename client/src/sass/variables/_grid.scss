@@ -1,0 +1,8 @@
+/* flex-grid сетка */
+
+// расстояние между ячейками сетки
+$grid-column-gap: $pad * 2.5;
+$grid-row-gap: $pad;
+
+// максимальное количество колонок
+$max-grid-column-count: 5;

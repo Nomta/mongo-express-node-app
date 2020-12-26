@@ -3,7 +3,7 @@ const {
     getCSSLoaders,
     getFileLoaders,
     getPathNames
-} = require("./utils");
+} = require('./utils');
 
 const pathnames = getPathNames(__dirname);
 
@@ -17,7 +17,7 @@ const webpackModule = {
         },
         {
             test: /\.s[ac]ss$/,
-            use: getCSSLoaders("sass-loader")
+            use: getCSSLoaders('sass-loader')
         },
         {
             test: /\.(png|jpg|svg|gif)$/,
@@ -26,15 +26,11 @@ const webpackModule = {
         {
             test: /\.(ttf|woff|woff2|eot)$/,
             use: getFileLoaders(pathnames.fonts)
-            // }, {
-            //     test: /\.hbs$/,
-            //     exclude: /node_modules/,
-            //     loader: 'handlebars-loader',
         },
         {
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: getBabelLoader("@babel/preset-react")
+            loader: getBabelLoader('@babel/preset-react')
         }
     ]
 };

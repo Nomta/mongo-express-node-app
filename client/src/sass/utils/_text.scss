@@ -1,0 +1,39 @@
+@import '../mixins/helpers';
+
+$text-colors: (
+    link: $link-color,
+    muted: $muted-color,
+    white: white
+);
+
+@include styles-from-list(text, text-align, (left, right, center));
+@include styles-from-map(text, color, $text-colors);
+
+.text {
+    &-bold {
+        font-weight: bold;
+    }
+    &-nowrap {
+        white-space: nowrap;
+    }
+    &-break {
+        word-break: break-word;
+    }
+    &-underline {
+        text-decoration: underline;
+    }
+    &-uppercase {
+        text-transform: uppercase;
+    }
+    // &- {  }
+}
+
+@for $i from 12 through 25 {
+    .fz-#{$i} {
+        font-size: $i + px;
+    }
+}
+
+.lh-1 {
+    line-height: 1;
+}

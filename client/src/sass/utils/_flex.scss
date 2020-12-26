@@ -1,0 +1,84 @@
+[class*='flex-'] {
+    display: flex;
+}
+
+.flex {
+    display: flex;
+
+    &-x {
+        &-start {
+            justify-content: flex-start;
+        }
+        &-end {
+            justify-content: flex-end;
+        }
+        &-center {
+            justify-content: center;
+        }
+        &-around {
+            justify-content: space-around;
+        }
+        &-between {
+            justify-content: space-between;
+        }
+    }
+
+    &-y {
+        &-start {
+            align-items: flex-start;
+        }
+        &-end {
+            align-items: flex-end;
+        }
+        &-center {
+            align-items: center;
+        }
+        &-baseline {
+            align-items: baseline;
+        }
+    }
+
+    &-xy-center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-wrap {
+        flex-wrap: wrap;
+    }
+    &-nowrap {
+        flex-wrap: nowrap;
+    }
+    &-column {
+        flex-direction: column;
+    }
+    &-inline {
+        display: inline-flex;
+    }
+}
+
+.align-self {
+    &-start {
+        align-self: flex-start;
+    }
+    &-end {
+        align-self: flex-end;
+    }
+    &-center {
+        align-self: center;
+    }
+    &-baseline {
+        align-self: baseline;
+    }
+}
+
+[class*='flex-group'] {
+    flex-wrap: wrap;
+}
+@for $i from 1 through 6 {
+    .flex-group-#{$i*5} *:not(:last-child) {
+        margin-right: $i * 5 + px;
+    }
+}
+
+// .fl-grow-1 { flex-grow: 1; }
