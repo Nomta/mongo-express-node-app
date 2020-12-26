@@ -1,3 +1,5 @@
+const isDev = process.env.NODE_ENV === 'development';
+
 /* pathnames */
 
 exports.entry = {
@@ -8,7 +10,7 @@ exports.entry = {
 exports.dirnames = {
     /* main paths */
     src: 'client/src',
-    dist: 'public',
+    dist: isDev ? 'client/dist' : 'public',
     /* sub directories */
     assets: 'assets',
     fonts: 'assets',
@@ -24,10 +26,8 @@ exports.fileNamePatterns = {
 };
 
 exports.filesToBeCopy = [];
-exports.filenames = {
-    main: './../views/partials/assets/main.hbs',
-    hex: './../views/partials/assets/hex.hbs'
-};
+exports.filenames = ['main', 'hex'];
+exports.pathToAssets = 'views/partials/assets/';
 
 /* dependencies */
 

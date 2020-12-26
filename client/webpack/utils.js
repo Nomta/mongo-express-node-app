@@ -1,38 +1,38 @@
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.NODE_ENV === 'development';
 
 /* loaders */
 
 exports.getBabelLoader = function (...presets) {
     return {
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-            presets: ["@babel/preset-env", ...presets],
-            plugins: ["@babel/plugin-proposal-class-properties"],
+            presets: ['@babel/preset-env', ...presets],
+            plugins: ['@babel/plugin-proposal-class-properties'],
             babelrc: false
         }
     };
 };
 
 exports.getCSSLoaders = function (...loaders) {
-    const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+    const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
     return [
-        isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-        "css-loader",
+        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+        'css-loader',
         ...loaders
     ];
 };
 
 exports.getFileLoaders = function (dirname) {
-    const path = require("path");
+    const path = require('path');
 
     return [
         {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
                 name: path.resolve(
                     __dirname,
-                    exports.getPathName("[ext]", dirname)
+                    exports.getPathName('[ext]', dirname)
                 )
             }
         }
@@ -42,7 +42,7 @@ exports.getFileLoaders = function (dirname) {
 /* paths */
 
 exports.getPathName = function (ext, dirname) {
-    const { dirnames, fileNamePatterns } = require("./config");
+    const { dirnames, fileNamePatterns } = require('./config');
     const pattern = fileNamePatterns[process.env.NODE_ENV];
     dirname = dirname || dirnames[getExtensionType(ext)];
 
@@ -50,15 +50,23 @@ exports.getPathName = function (ext, dirname) {
 };
 
 exports.getPathNames = function (src) {
-    const path = require("path");
-    const { mapValues } = require("lodash");
-    const { dirnames } = require("./config");
+    const path = require('path');
+    const { mapValues } = require('lodash');
+    const { dirnames } = require('./config');
 
     return mapValues(dirnames, (dirname) => path.relative(src, dirname));
 };
 
+exports.getPathToAssets = function (chunkName) {
+    const path = require('path');
+    const { pathToAssets } = require('./config');
+    const prefixPath = isDev ? './../../' : './../';
+
+    return prefixPath + pathToAssets + chunkName + '.hbs';
+};
+
 exports.getPatternsToCopy = function (files, src, dist) {
-    const path = require("path");
+    const path = require('path');
 
     return files.map((filename) => ({
         from: path.join(__dirname, src, filename),
@@ -69,9 +77,9 @@ exports.getPatternsToCopy = function (files, src, dist) {
 /* internal */
 
 function getExtensionType(ext) {
-    if (/^(js|jsx|ts)$/.test(ext)) return "scripts";
-    if (/^(c|sa|sc)ss$/.test(ext)) return "styles";
-    if (/^(png|jpe?g|svg|gif)$/.test(ext)) return "images";
-    if (/^(ttf|woff2?|eot)$/.test(ext)) return "fonts";
-    return "assets";
+    if (/^(js|jsx|ts)$/.test(ext)) return 'scripts';
+    if (/^(c|sa|sc)ss$/.test(ext)) return 'styles';
+    if (/^(png|jpe?g|svg|gif)$/.test(ext)) return 'images';
+    if (/^(ttf|woff2?|eot)$/.test(ext)) return 'fonts';
+    return 'assets';
 }
