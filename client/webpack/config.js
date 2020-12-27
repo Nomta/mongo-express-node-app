@@ -7,6 +7,8 @@ exports.entry = {
     hex: './pages/hex/index.js'
 };
 
+exports.filenames = ['main', 'hex'];
+
 exports.dirnames = {
     /* main paths */
     src: 'client/src',
@@ -26,7 +28,7 @@ exports.fileNamePatterns = {
 };
 
 exports.filesToBeCopy = [];
-exports.filenames = ['main', 'hex'];
+
 exports.pathToAssets = 'views/partials/assets/';
 
 /* dependencies */
