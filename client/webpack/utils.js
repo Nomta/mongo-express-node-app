@@ -16,11 +16,7 @@ exports.getBabelLoader = function (...presets) {
 exports.getCSSLoaders = function (...loaders) {
     const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-    return [
-        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-        'css-loader',
-        ...loaders
-    ];
+    return [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', ...loaders];
 };
 
 exports.getFileLoaders = function (dirname) {
@@ -30,10 +26,7 @@ exports.getFileLoaders = function (dirname) {
         {
             loader: 'file-loader',
             options: {
-                name: path.resolve(
-                    __dirname,
-                    exports.getPathName('[ext]', dirname)
-                )
+                name: path.resolve(__dirname, exports.getPathName('[ext]', dirname))
             }
         }
     ];

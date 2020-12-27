@@ -1,17 +1,16 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-
 const webpack = require('webpack');
 
-const {
-    getPathName,
-    getPatternsToCopy,
-    getPathNames,
-    getPathToAssets
-} = require('./utils');
 const { alias, filesToBeCopy, filenames } = require('./config');
+const { getPathName, getPatternsToCopy, getPathNames, getPathToAssets } = require('./utils');
 
 const pathnames = getPathNames(__dirname);
+
+const isDev = process.env.NODE_ENV === 'development';
+
+/* plugins */
+
 const HTMLWebpackPlugins = filenames.map(
     (filename) =>
         new HTMLWebpackPlugin({
@@ -20,10 +19,6 @@ const HTMLWebpackPlugins = filenames.map(
             chunks: [filename]
         })
 );
-
-const isDev = process.env.NODE_ENV === 'development';
-
-/* plugins */
 
 const plugins = [
     ...HTMLWebpackPlugins,
@@ -43,11 +38,7 @@ if (isDev) {
 
 if (filesToBeCopy && filesToBeCopy.length) {
     const CopyWebpackPlugin = require('copy-webpack-plugin');
-    const patterns = getPatternsToCopy(
-        filesToBeCopy,
-        pathnames.src,
-        pathnames.dist
-    );
+    const patterns = getPatternsToCopy(filesToBeCopy, pathnames.src, pathnames.dist);
 
     plugins.push(new CopyWebpackPlugin(patterns));
 }
