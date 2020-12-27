@@ -1,6 +1,8 @@
 node_modules
 client/dist
 public
+views/partials/assets
+
 .idea
 .vscode
 
