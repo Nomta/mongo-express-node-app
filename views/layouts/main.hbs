@@ -6,8 +6,15 @@
     {{> assets/main}}
     {{#if assets}}{{> (lookup . 'assets') }}{{/if}}
   </head>
-  <body style="background-color: gray;">
+  <body>
     {{> header}}
-    {{{body}}}
+    <div class="main-content">
+      {{> menu}}
+      <div class="container page-container">
+      {{{body}}}
+      </div>
+      {{> sidebar}}
+    </div>
+    {{> footer}}
   </body>
 </html>

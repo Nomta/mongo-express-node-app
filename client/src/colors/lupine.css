@@ -1,0 +1,15 @@
+html {
+    /* CSS HEX */
+    --orange-yellow-crayola: #ffd763ff;
+    --coral: #fe8763ff;
+    --blue-pantone: #341da8ff;
+    --midnight-blue: #250f60ff;
+    --dark-slate-blue: #42358aff;
+
+    /* CSS HSL */
+    --orange-yellow-crayola: hsla(45, 100%, 69%, 1);
+    --coral: hsla(14, 99%, 69%, 1);
+    --blue-pantone: hsla(250, 71%, 39%, 1);
+    --midnight-blue: hsla(256, 73%, 22%, 1);
+    --dark-slate-blue: hsla(249, 45%, 37%, 1);
+}

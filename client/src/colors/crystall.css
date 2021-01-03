@@ -1,0 +1,15 @@
+html {
+    /* CSS HEX */
+    --kombu-green: #243119ff;
+    --carrot-orange: #ed991dff;
+    --straw: #cfcd4fff;
+    --cobalt-blue: #06469eff;
+    --prussian-blue: #022d5fff;
+
+    /* CSS HSL */
+    --kombu-green: hsla(93, 32%, 15%, 1);
+    --carrot-orange: hsla(36, 85%, 52%, 1);
+    --straw: hsla(59, 57%, 56%, 1);
+    --cobalt-blue: hsla(215, 93%, 32%, 1);
+    --prussian-blue: hsla(212, 96%, 19%, 1);
+}

@@ -1,7 +1,7 @@
 $mark-colors-map: (
-    info: map-get($mark-colors, cyan),
-    success: map-get($mark-colors, teal),
-    warning: map-get($mark-colors, orange) // , accent: $accent-color
+    info: map-get($palette, lime),
+    success: map-get($palette, royalblue),
+    warning: map-get($palette, orange) // , accent: $accent-color
 );
 
 @each $color-name, $color in $mark-colors-map {

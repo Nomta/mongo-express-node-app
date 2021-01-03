@@ -1,6 +1,6 @@
-@import 'variables/grid';
-@import 'variables/breakpoints';
-@import 'mixins/helpers';
+@import '../variables/grid';
+@import '../variables/breakpoints';
+@import '../mixins/helpers';
 
 [class*='grid-'] {
     display: flex;

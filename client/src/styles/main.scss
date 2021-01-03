@@ -1,0 +1,112 @@
+@import '@/sass/main.scss';
+
+body {
+    background-color: $light-color;
+}
+
+@media (min-width: map-get($breakpoints, md)) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    .main-content {
+        flex: 1;
+    }
+}
+
+.form-control:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.main-content {
+    padding: 1rem;
+}
+
+.page-container {
+    min-height: 100%;
+    background-color: $white;
+}
+
+.page-header {
+    margin: 0;
+    padding: 1rem;
+    background-color: map-get($skyblue-colors, 300);
+}
+
+.page-search {
+    padding: 0;
+}
+
+.page-search-form {
+    margin-bottom: 0;
+}
+
+.page-search-control {
+    border: none;
+    color: map-get($gray-colors, 500);
+    background-color: lighten(map-get($skyblue-colors, 200), 2%);
+    transition: 0.3s background-color;
+    &:focus {
+        color: map-get($gray-colors, 500);
+        background-color: map-get($skyblue-colors, 200);
+    }
+}
+
+@media (max-width: map-get($breakpoints, xl) - 1) {
+    .page-header .logo,
+    .page-header .auth {
+        display: none;
+    }
+    .page-menu {
+        $width: 482px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        margin-left: -$width;
+        width: 62.75%;
+        max-width: $width;
+        z-index: 2000;
+        padding: 2rem;
+        background-color: map-get($skyblue-colors, 300);
+        // background-color: map-get($palette, royalblue);
+        transition: $transition-duration margin-left;
+    }
+
+    .page-menu-active {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: map-get($breakpoints, xl)) {
+    $sidebar-width: 12rem;
+    .page-header,
+    .main-content {
+        display: flex;
+        justify-content: center;
+    }
+    .page-aside {
+        width: $sidebar-width;
+        flex: none;
+    }
+    .page-menu,
+    .page-sidebar,
+    .page-container {
+        padding: 2rem;
+    }
+    .page-menu,
+    .page-sidebar {
+        align-self: start;
+        background-color: $white;
+    }
+    .page-menu {
+        position: static;
+    }
+    .page-search,
+    .page-container {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}

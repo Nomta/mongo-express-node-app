@@ -1,21 +1,65 @@
-$main-color: #107393;
-$accent-color: #fd7737;
-$link-color: #107393;
-$muted-color: #77828e;
-$light-color: #c3c3c3;
-$shadow-color: rgba(#000, 0.16);
-
-$mark-colors: (
+$palette: (
     cyan: cyan,
     teal: teal,
-    orange: orange,
-    yellow: yellow
+    royalblue: #2e96d3,
+    pink: #de9d8d,
+    purple: #c01f78,
+    violet: #4c2a73,
+    darkgreen: #032b03,
+    green: #096f0b,
+    lightgreen: #54a033,
+    lime: #77c42f,
+    orange: #fe7b1a,
+    red: #f13a08,
+    blue: #1d229a,
+    navy: #271565
 );
 
-$primary-color: $main-color;
-$secondary-color: $accent-color;
+$azure-colors: (
+    500: #a3a5e5,
+    400: #2c3584,
+    300: #130e6c,
+    200: #020454,
+    100: #0d0236
+);
 
-$info-color: map-get($mark-colors, cyan);
-$success-color: map-get($mark-colors, teal);
-$warning-color: map-get($mark-colors, orange);
-$mark-color: map-get($mark-colors, yellow);
+$skyblue-colors: (
+    500: #00a6fb,
+    400: #0582ca,
+    300: #006494,
+    200: #003554,
+    100: #051923
+);
+
+$blue-colors: (
+    500: #0466c8,
+    400: #0353a4,
+    300: #023e7d,
+    200: #002855,
+    100: #001845
+);
+
+$gray-colors: (
+    800: #fefefe,
+    700: #efefef,
+    500: #979dac,
+    400: #7d8597,
+    300: #5c677d,
+    200: #33415c,
+    100: #001233
+);
+
+$main-color: map-get($blue-colors, 400);
+$base-color: map-get($blue-colors, 300);
+$dark-color: map-get($blue-colors, 200);
+$link-color: map-get($blue-colors, 500);
+$light-color: map-get($gray-colors, 700);
+$muted-color: map-get($gray-colors, 400);
+$shadow-color: map-get($gray-colors, 500);
+
+$blue: map-get($palette, blue);
+$navy: map-get($palette, navy);
+$red: map-get($palette, red);
+$orange: map-get($palette, orange);
+$cyan: map-get($palette, royalblue);
+$white: map-get($gray-colors, 800);

@@ -1,0 +1,25 @@
+html {
+    /* CSS HEX */
+    --true-blue: #0466c8ff;
+    --usafa-blue: #0353a4ff;
+    --dark-cornflower-blue: #023e7dff;
+    --oxford-blue: #002855ff;
+    --oxford-blue-2: #001845ff;
+    --oxford-blue-3: #001233ff;
+    --independence: #33415cff;
+    --black-coral: #5c677dff;
+    --roman-silver: #7d8597ff;
+    --manatee: #979dacff;
+
+    /* CSS HSL */
+    --true-blue: hsla(210, 96%, 40%, 1);
+    --usafa-blue: hsla(210, 96%, 33%, 1);
+    --dark-cornflower-blue: hsla(211, 97%, 25%, 1);
+    --oxford-blue: hsla(212, 100%, 17%, 1);
+    --oxford-blue-2: hsla(219, 100%, 14%, 1);
+    --oxford-blue-3: hsla(219, 100%, 10%, 1);
+    --independence: hsla(220, 29%, 28%, 1);
+    --black-coral: hsla(220, 15%, 43%, 1);
+    --roman-silver: hsla(222, 11%, 54%, 1);
+    --manatee: hsla(223, 11%, 63%, 1);
+}
