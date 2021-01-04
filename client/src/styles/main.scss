@@ -55,8 +55,7 @@ body {
 }
 
 @media (max-width: map-get($breakpoints, xl) - 1) {
-    .page-header .logo,
-    .page-header .auth {
+    .page-header .page-aside {
         display: none;
     }
     .page-menu {
@@ -82,31 +81,50 @@ body {
 
 @media (min-width: map-get($breakpoints, xl)) {
     $sidebar-width: 12rem;
+
     .page-header,
     .main-content {
         display: flex;
         justify-content: center;
     }
-    .page-aside {
-        width: $sidebar-width;
-        flex: none;
-    }
-    .page-menu,
-    .page-sidebar,
-    .page-container {
-        padding: 2rem;
-    }
-    .page-menu,
-    .page-sidebar {
-        align-self: start;
-        background-color: $white;
-    }
-    .page-menu {
-        position: static;
-    }
+
     .page-search,
     .page-container {
         margin-left: 1rem;
         margin-right: 1rem;
+    }
+
+    .main-content .page-aside,
+    .page-container {
+        border-radius: $border-radius;
+    }
+
+    .page-sidebar,
+    .page-container {
+        padding: 2rem;
+    }
+
+    .page-aside {
+        width: $sidebar-width;
+        flex: none;
+    }
+
+    .main-content .page-aside {
+        align-self: start;
+        background-color: $white;
+    }
+
+    .page-menu {
+        position: static;
+        padding: 2rem 0;
+    }
+
+    .page-menu .page-nav-item {
+        padding: 0.25rem 2rem;
+        &:hover,
+        &.active {
+            background-color: map-get($skyblue-colors, 300);
+            color: $white;
+        }
     }
 }

@@ -24,6 +24,8 @@ a {
 a:active,
 a:hover {
     outline: 0;
+    text-decoration: none;
+    color: inherit;
 }
 button,
 input,
