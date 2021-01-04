@@ -1,5 +1,6 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 const { alias, filesToBeCopy, filenames } = require('./config');
@@ -23,6 +24,7 @@ const HTMLWebpackPlugins = filenames.map(
 const plugins = [
     ...HTMLWebpackPlugins,
     new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'defer' }),
+    new MiniCssExtractPlugin({ filename: getPathName('css') }),
     new webpack.ProvidePlugin(alias)
 ];
 
@@ -31,9 +33,7 @@ if (isDev) {
     plugins.push(new WebpackNotifierPlugin());
 } else {
     const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-    const MiniCssExtractPlugin = require('mini-css-extract-plugin');
     plugins.push(new CleanWebpackPlugin());
-    plugins.push(new MiniCssExtractPlugin({ filename: getPathName('css') }));
 }
 
 if (filesToBeCopy && filesToBeCopy.length) {

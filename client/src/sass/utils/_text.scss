@@ -3,7 +3,7 @@
 $text-colors: (
     link: $link-color,
     muted: $muted-color,
-    white: white
+    white: $white
 );
 
 @include styles-from-list(text, text-align, (left, right, center));

@@ -1,2 +1,2 @@
-/** @jsx jsx */
 import '@/styles/main.scss';
+import '@/components/auth';

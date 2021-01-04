@@ -1,15 +1,11 @@
 .hex-list {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 1.5rem;
+    margin-top: 1.5em;
+    font-size: 12px;
     li {
-        width: 4rem;
-        height: 4rem;
-        margin: 1rem;
+        width: 4em;
+        height: 4em;
+        margin: 1em;
     }
-}
-
-.container {
-    width: 1200px !important;
-    min-width: 1200px !important;
 }

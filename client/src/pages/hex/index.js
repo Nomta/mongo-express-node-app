@@ -25,7 +25,7 @@ const List = (props) => (
 // </div>);
 
 const Edelweiss = (
-    <div class="container">
+    <div>
         <List codes={colors.meadow} />
         <List codes={colors.asphalt} />
         <List codes={colors.skyblue} />

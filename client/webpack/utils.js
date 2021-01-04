@@ -16,7 +16,7 @@ exports.getBabelLoader = function (...presets) {
 exports.getCSSLoaders = function (...loaders) {
     const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-    return [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', ...loaders];
+    return [MiniCssExtractPlugin.loader, 'css-loader', ...loaders];
 };
 
 exports.getFileLoaders = function (dirname) {

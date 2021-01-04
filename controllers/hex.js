@@ -1,3 +1,3 @@
 exports.get = function (req, res) {
-    res.render('hex', { title: 'Hex', assets: 'assets/hex' });
+    res.render('index', { title: 'Hex', assets: 'assets/hex' });
 };

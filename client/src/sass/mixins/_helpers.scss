@@ -1,7 +1,7 @@
 @mixin styles-from-list($prefix-name, $prop-name, $list) {
     @each $item in $list {
         .#{$prefix-name}-#{$item} {
-            #{$prop-name}: $item;
+            #{$prop-name}: $item !important;
         }
     }
 }
@@ -9,7 +9,7 @@
 @mixin styles-from-map($prefix-name, $prop-name, $map) {
     @each $key, $value in $map {
         .#{$prefix-name}-#{$key} {
-            #{$prop-name}: $value;
+            #{$prop-name}: $value !important;
         }
     }
 }

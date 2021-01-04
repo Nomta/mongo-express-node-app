@@ -1,7 +1,7 @@
-const { port, proxy } = require("./config");
+const { port, proxy } = require('./config');
 
 module.exports = {
-    mode: "development",
+    mode: 'development',
     devServer: { proxy, port, hot: true },
-    devtool: "source-map"
+    devtool: 'inline-source-map'
 };
