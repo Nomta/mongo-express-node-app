@@ -1,17 +1,21 @@
 const config = {
+    app: {
+        roles: ['user', 'admin'],
+        types: ['case', 'story']
+    },
     crypto: {
         iterations: 12000,
         length: 128,
-        digest: "sha512"
+        digest: 'sha512'
     },
     mongodb: {
-        uri: "mongodb://localhost/node-app"
+        uri: 'mongodb://localhost/node-app'
     },
     session: {
-        secret: "123",
-        key: "123",
+        secret: '123',
+        key: '123',
         cookie: {
-            path: "/",
+            path: '/',
             httpOnly: true,
             maxAge: null
         }
