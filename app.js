@@ -3,6 +3,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const expressHbs = require('express-handlebars');
+const HttpError = require('./error/http-error');
+const sendHttpError = require('./middlewares/send-http-error');
+const config = require('./config');
 
 const indexRouter = require('./routes/index');
 // const userRouter = require('./routes/users');
@@ -24,6 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(staticPath));
+app.use(sendHttpError);
 
 /* routes */
 
@@ -39,11 +43,22 @@ app.use(function (req, res, next) {
 
 /* error handler */
 
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
+    if (err.status === 401) {
+        res.redirect('/login');
+    }
+
     // set locals, only providing error in development
-    res.locals.message = err.message;
-    // res.locals.error = req.app.get("env") === "development" ? err : {};
-    res.locals.error = isProd ? {} : err;
+    if (req.app.get('env') === 'development') {
+        if (err instanceof HttpError) {
+            return res.sendHttpError(err);
+        }
+        res.locals.message = err.message;
+        res.locals.error = err;
+    } else {
+        res.locals.message = 'Internal server error';
+        res.locals.error = {};
+    }
 
     // render the error page
     res.status(err.status || 500);

@@ -1,5 +1,9 @@
-/** @jsx jsx */
+import ReactDOM from 'react-dom';
 
-const Auth = <a>Auth</a>;
+class Auth extends React.Component {
+    render() {
+        return <a>Auth</a>;
+    }
+}
 
-document.getElementById('auth').appendChild(Auth);
+ReactDOM.render(<Auth />, document.getElementById('auth'));
