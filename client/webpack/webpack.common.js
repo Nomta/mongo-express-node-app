@@ -1,4 +1,5 @@
 const path = require('path');
+const { mapValues } = require('lodash');
 const { getPathName, getPathNames } = require('./utils');
 const { entry, alias } = require('./config');
 
@@ -14,16 +15,16 @@ const config = {
         path: path.resolve(__dirname, pathnames.dist),
         publicPath: ''
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all'
+    //     }
+    // },
     resolve: {
-        alias: Object.assign({}, alias, {
-            '@': path.resolve(__dirname, pathnames.src),
-            jsx: path.resolve(__dirname, pathnames.src, 'libs/jsx')
-        })
+        alias: Object.assign(
+            {},
+            mapValues(alias, (prefix) => path.resolve(__dirname, pathnames.src, prefix))
+        )
     },
     module: require('./webpack.module'),
     plugins: require('./webpack.plugins')

@@ -1,9 +1,4 @@
-const {
-    getBabelLoader,
-    getCSSLoaders,
-    getFileLoaders,
-    getPathNames
-} = require('./utils');
+const { getBabelLoader, getCSSLoaders, getFileLoaders, getPathNames } = require('./utils');
 
 const pathnames = getPathNames(__dirname);
 
@@ -31,6 +26,11 @@ const webpackModule = {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: getBabelLoader('@babel/preset-react')
+        },
+        {
+            test: /\.hbs$/,
+            exclude: /node_modules/,
+            loader: 'handlebars-loader'
         }
     ]
 };

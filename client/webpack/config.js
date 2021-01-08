@@ -7,8 +7,6 @@ exports.entry = {
     hex: './pages/hex/index.js'
 };
 
-exports.filenames = ['main', 'hex'];
-
 exports.dirnames = {
     /* main paths */
     src: 'client/src',
@@ -27,15 +25,18 @@ exports.fileNamePatterns = {
     stats: '[name].[hash:5]'
 };
 
+exports.alias = {
+    '@': ''
+};
+
 exports.filesToBeCopy = [];
 
 exports.pathToAssets = 'views/partials/assets/';
 
 /* dependencies */
 
-exports.alias = {
-    lodash: 'lodash',
-    jsx: 'jsx'
+exports.moduleNames = {
+    lodash: 'lodash'
 };
 
 /* devServer */
