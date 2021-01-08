@@ -36,7 +36,8 @@ exports.pathToAssets = 'views/partials/assets/';
 /* dependencies */
 
 exports.moduleNames = {
-    lodash: 'lodash'
+    lodash: 'lodash',
+    React: 'react'
 };
 
 /* devServer */

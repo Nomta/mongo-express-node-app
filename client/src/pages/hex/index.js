@@ -1,38 +1,28 @@
-/** @jsx jsx */
-
+import ReactDOM from 'react-dom';
 import { colors } from '@/colors/colors';
 import edelweiss from '@/colors/edelweiss';
 import '@/sass/main.scss';
 import './index.scss';
 
-const List = (props) => (
-    <ul class="hex-list">
-        {props.codes.map((code) => (
-            <li style={'background-color: #' + code} title={code}></li>
-        ))}
-    </ul>
-);
+const List = (props) => {
+    return (
+        <ul className="hex-list">
+            {props.codes.map((code) => (
+                <li key={code} style={{ backgroundColor: `#${code}` }} title={code}></li>
+            ))}
+        </ul>
+    );
+};
 
-// const codes = ['f', '8', '0'];
-// const rgbs = [];
+const Edelweiss = () => {
+    return (
+        <div>
+            <List codes={colors.meadow} />
+            <List codes={colors.asphalt} />
+            <List codes={colors.skyblue} />
+            <List codes={edelweiss.colors} />
+        </div>
+    );
+};
 
-// codes.forEach((r) =>
-//     codes.forEach((g) => codes.forEach((b) => rgbs.push(`${r}${g}${b}`)))
-// );
-
-// const ColorList = (<div class="container">
-//     {Object.values(colors).map(value => <List codes={value}/>)}
-// </div>);
-
-const Edelweiss = (
-    <div>
-        <List codes={colors.meadow} />
-        <List codes={colors.asphalt} />
-        <List codes={colors.skyblue} />
-        <List codes={edelweiss.colors} />
-    </div>
-);
-
-// document.getElementById('root').appendChild(<List codes={rgbs}/>);
-// document.getElementById('root').appendChild(ColorList);
-document.getElementById('root').appendChild(Edelweiss);
+ReactDOM.render(<Edelweiss />, document.getElementById('root'));
