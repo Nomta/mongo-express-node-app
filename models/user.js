@@ -21,9 +21,9 @@ const userSchema = new mongoose.Schema(
             unique: 'Такой email уже существует'
         },
         name: {
-            type: String,
-            required: 'Имя пользователя не указано',
-            unique: 'Такое имя уже существует'
+            type: String
+            // required: 'Имя пользователя не указано',
+            // unique: 'Такое имя уже существует'
         },
         role: {
             type: String,
@@ -91,4 +91,4 @@ userSchema.methods.checkPassword = async function (password) {
     return hash === this.passwordHash;
 };
 
-module.exports = connection.model('User', userSchema);
+module.exports = connection.models.User || connection.model('User', userSchema);

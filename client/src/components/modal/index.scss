@@ -1,0 +1,20 @@
+@import '@/sass/main.scss';
+
+.modal {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    padding-bottom: 1rem;
+    border-bottom: none;
+    background-color: $royalblue;
+    .close {
+        text-shadow: none;
+    }
+}
+
+.modal-body {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}

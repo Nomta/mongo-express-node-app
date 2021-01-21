@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import { colors } from '@/colors/colors';
 import edelweiss from '@/colors/edelweiss';
-import '@/sass/main.scss';
 import './index.scss';
 
 const List = (props) => {

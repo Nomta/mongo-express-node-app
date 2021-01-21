@@ -1,0 +1,19 @@
+.form-control:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.btn {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.btn-submit {
+    background-color: $main-color;
+    color: $white;
+    &:hover {
+        background-color: $base-color;
+        color: $white;
+    }
+}
