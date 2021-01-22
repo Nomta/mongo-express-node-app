@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom';
-import { useHistory } from 'react-router-dom';
 import Modal from '@/components/modal';
 import Tabs from '@/components/tabs';
 import LoginForm from './login-form';
@@ -7,7 +6,6 @@ import RegisterForm from './register-form';
 
 const Auth = () => {
     const user = localStorage.getItem('user');
-    const history = useHistory();
     const [isAuth, setAuth] = React.useState(!!user);
     const [modalVisible, setModalVisible] = React.useState(false);
 

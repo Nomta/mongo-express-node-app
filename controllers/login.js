@@ -1,36 +1,42 @@
+// const passport = require('passport');
 const User = require('../models/user');
-const Session = require('../models/session');
 const AuthError = require('../error/auth-error');
+
 const { v4: uuid } = require('uuid');
+const passport = require('../service/passport');
 
 exports.get = function (req, res, next) {
     res.render('index', { title: 'Login' });
 };
 
+// exports.post = passport.authenticate('login', {
+//   successRedirect: '/home',
+//   failureRedirect: '/',
+//   failureFlash : true
+// // });
+
+// exports.post = async function login(req, res, next) {
+//     await passport.authenticate('local', async (err, user, info) => {
+//         if (err) throw err;
+
+//         if (!user) {
+//             return res.send(400);
+//         }
+
+//         const token = uuid();
+
+//         res.send({ token });
+//     });
+// };
+
 exports.post = async function login(req, res, next) {
     const { email, password } = req.body;
 
     try {
-        const user = await checkAuth(email, password);
-        const token = uuid();
-
-        // await Session.create({
-        //   token,
-        //   user: user.id,
-        //   visited: new Date()
-        // });
-
-        //   req.session = req.session || {}
-        //   req.session.user = user.id;
-        const options = {
-            maxAge: 900000,
-            sameSite: 'Strict',
-            // signed: true,
-            httpOnly: true
-        };
-
-        res.cookie('token', token, options);
-        res.json({ user });
+        const user = await getUser(email, password);
+        // const token = uuid();
+        req.session.user = user._id;
+        res.send(req.session);
     } catch (err) {
         if (err instanceof AuthError) {
             const message = req.app.get('env') === 'development' ? err.message : 'Uncorrect data';
@@ -40,7 +46,7 @@ exports.post = async function login(req, res, next) {
     }
 };
 
-async function checkAuth(email, password) {
+async function getUser(email, password) {
     if (!email || !password) {
         throw new AuthError('Uncorrect data');
     }

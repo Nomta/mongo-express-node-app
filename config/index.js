@@ -14,8 +14,11 @@ const config = {
     session: {
         secret: '123',
         key: '123',
+        resave: false,
+        saveUninitialized: false,
         cookie: {
             path: '/',
+            sameSite: 'Strict',
             httpOnly: true,
             maxAge: null
         }
