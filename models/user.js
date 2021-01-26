@@ -47,7 +47,11 @@ const userSchema = new mongoose.Schema(
         //   ref: 'Rate'
         // },
         slogan: String,
-        settings: Number
+        settings: Number,
+
+        /* verification token */
+
+        verificationToken: String
     },
     {
         timestamps: true
