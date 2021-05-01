@@ -3,7 +3,7 @@ const User = require('../models/user');
 const AuthError = require('../error/auth-error');
 
 const { v4: uuid } = require('uuid');
-const passport = require('../service/passport');
+// const passport = require('../service/passport');
 
 exports.get = function (req, res, next) {
     res.render('index', { title: 'Login' });
