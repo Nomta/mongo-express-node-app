@@ -10,15 +10,18 @@ module.exports.post = async (req, res, next) => {
         const token = uuid();
         const user = await createUser(email, password, token);
 
-        const { url } = await sendMail({
-            from: 'from@domain.com',
-            to: email,
-            subject: 'Подтвердите почту',
-            context: { token },
-            template: 'confirm-registration'
-        });
+        // const { url } = await sendMail({
+        //     from: 'from@domain.com',
+        //     to: email,
+        //     subject: 'Подтвердите почту',
+        //     context: { token },
+        //     template: 'confirm-registration'
+        // });
 
-        res.send({ url });
+        // res.send({ url });
+
+        req.session.user = user._id;
+        res.send(req.session);
     } catch (err) {
         if (err instanceof AuthError) {
             return res.send(401, { message: err.message });
@@ -27,7 +30,7 @@ module.exports.post = async (req, res, next) => {
     }
 };
 
-module.exports.params = async (req, res, next) => {
+module.exports.confirm = async (req, res, next) => {
     try {
         const user = await User.findOne({
             verificationToken: req.params.token
@@ -40,7 +43,7 @@ module.exports.params = async (req, res, next) => {
         user.verificationToken = undefined;
         await user.save();
 
-        req.session.user = user._id;
+        // req.session.user = user._id;
         res.redirect('/');
     } catch (err) {
         return next(err);

@@ -5,9 +5,9 @@ const AuthError = require('../error/auth-error');
 const { v4: uuid } = require('uuid');
 // const passport = require('../service/passport');
 
-exports.get = function (req, res, next) {
-    res.render('index', { title: 'Login' });
-};
+// exports.get = function (req, res, next) {
+//     res.render('index', { title: 'Login' });
+// };
 
 // exports.post = passport.authenticate('login', {
 //   successRedirect: '/home',

@@ -10,6 +10,7 @@ const store = require('./service/session-store');
 const config = require('./config');
 
 const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
 // const userRouter = require('./routes/users');
 // const caseRouter = require('./routes/cases');
 
@@ -42,6 +43,7 @@ app.use(setUser);
 /* routes */
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 // app.use('/users', userRouter);
 // app.use('/cases', caseRouter);
 
