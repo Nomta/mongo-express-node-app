@@ -26,6 +26,7 @@
         "express-handlebars": "^5.2.0",
         "express-session": "^1.17.1",
         "http-errors": "~1.6.3",
+        "jsonwebtoken": "^8.5.1",
         "lodash": "^4.17.15",
         "mongoose": "^5.5.2",
         "mongoose-beautiful-unique-validation": "^7.1.1",

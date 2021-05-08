@@ -3,12 +3,6 @@ const config = {
         roles: ['user', 'admin'],
         types: ['case', 'story']
     },
-    // cookie: {
-    //     path: '/',
-    //     sameSite: 'Strict',
-    //     httpOnly: true,
-    //     maxAge: null
-    // },
     crypto: {
         iterations: 12000,
         length: 128,
