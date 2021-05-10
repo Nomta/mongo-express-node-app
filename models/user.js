@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 const connection = require('../service/connection');
 const config = require('../config');
+const { pick } = require('lodash');
 
 const userSchema = new mongoose.Schema(
     {
@@ -51,7 +52,11 @@ const userSchema = new mongoose.Schema(
 
         /* verification token */
 
-        verificationToken: String
+        verificationToken: String,
+
+        /* reset token */
+
+        resetToken: String
     },
     {
         timestamps: true
@@ -93,6 +98,10 @@ userSchema.methods.checkPassword = async function (password) {
 
     const hash = await generatePassword(this.salt, password);
     return hash === this.passwordHash;
+};
+
+userSchema.methods.mapData = function (password) {
+    return pick(this, ['name', 'avatar', 'info', 'slogan']);
 };
 
 module.exports = connection.models.User || connection.model('User', userSchema);

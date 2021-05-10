@@ -4,11 +4,11 @@ const { sendMail } = require('../service/nodemailer');
 const { v4: uuid } = require('uuid');
 
 module.exports.post = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, password, ...formData } = req.body;
 
     try {
         const token = uuid();
-        const user = await createUser(email, password, token);
+        const user = await createUser(email, password, token, formData);
 
         // const { url } = await sendMail({
         //     from: 'from@domain.com',
@@ -21,7 +21,7 @@ module.exports.post = async (req, res, next) => {
         // res.send({ url });
 
         req.session.user = user._id;
-        res.send(req.session);
+        res.send(user.mapData());
     } catch (err) {
         if (err instanceof AuthError) {
             return res.send(401, { message: err.message });
@@ -50,7 +50,7 @@ module.exports.confirm = async (req, res, next) => {
     }
 };
 
-async function createUser(email, password, verificationToken) {
+async function createUser(email, password, verificationToken, formData) {
     if (!email || !password) {
         throw new AuthError('Uncorrect data');
     }
@@ -62,7 +62,7 @@ async function createUser(email, password, verificationToken) {
             throw new AuthError('User exists');
         }
 
-        user = await User.create({ email, verificationToken });
+        user = await User.create({ email, verificationToken, ...formData });
         await user.setPassword(password);
         await user.save();
 

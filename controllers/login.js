@@ -24,7 +24,7 @@ exports.post = async function login(req, res, next) {
         }
 
         req.session.user = user._id;
-        res.send(req.session);
+        res.send(user.mapData());
     })(req, res, next);
 };
 
